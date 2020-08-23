@@ -60,6 +60,16 @@ class RegisterExternalController extends Controller
     }
     public function sign_up(Request $data)
     {
+        $validator= Validator::make($data->all(), [
+            'name' => 'required|max:255',
+            'password' => 'required|min:8',
+        ]);
+        if($validator->fails())
+        {
+            if(strlen($data->input('password'))<8)
+            return "passfail";
+            return "fail";
+        }
         if($this->register($data))
         return "success";
 

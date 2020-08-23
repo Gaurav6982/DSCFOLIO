@@ -48,7 +48,7 @@ export class Logout extends Component {
         .then(function (response) {
             // console.log(response.data);
             if(response.data='success')
-            window.location.href="/home"
+            window.location.href="/"
             else
             alert("Wrong Credentials!");
         })

@@ -13,10 +13,10 @@ export class MainComponent extends Component {
             <div>
                 <HeaderComponent/>
                 <Switch>
-                    <Route path='/home' component={Home} />
+                    <Route path='/' component={Home} />
                     <Route exact path='/build' component={Build}/>
                     <Route exact path='/profile' component={Profile}/>
-                    <Redirect to="/home" />
+                    <Redirect to="/" />
                 </Switch>
             </div>
         )

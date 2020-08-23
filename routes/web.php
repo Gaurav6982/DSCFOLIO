@@ -21,11 +21,8 @@ Route::post('/formSubmit','RegisterExternalController@sign_up');
 Route::post('/sign_in','UserController@sign_in');
 Route::post('/log-out','UserController@log_out');
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/build', function () {
-    return view('home');
-    });
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/build','HomeController@index');
     Route::post('/submit','UserController@submit');
 });
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');

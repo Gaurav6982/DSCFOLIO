@@ -30,18 +30,22 @@ export class SignUp extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-
         axios.post('/formSubmit', {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password
         })
         .then(function (response) {
-            console.log(response.data);
             if(response.data=='success')
             window.location.href="/build";
+            else if(response.data=='passfail')
+            alert("Password must be of 8 Digits.")
             else
-            alert('There Might be some error');
+            {
+                alert(response.status);
+                alert('There Might be some error');
+            }
+
         })
         .catch(function (error) {
             console.log(error);

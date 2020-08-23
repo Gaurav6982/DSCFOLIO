@@ -19,7 +19,6 @@ use App\SocialLinks;
 class UserController extends Controller
 {
     use AuthenticatesUsers;
-
     public function sign_in(Request $request)
     {
         if($this->login($request))

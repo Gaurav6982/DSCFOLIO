@@ -85215,7 +85215,7 @@ var Logout = /*#__PURE__*/function (_Component) {
       event.preventDefault();
       axios.post('/log-out', {}).then(function (response) {
         // console.log(response.data);
-        if (response.data = 'success') window.location.href = "/home";else alert("Wrong Credentials!");
+        if (response.data = 'success') window.location.href = "/";else alert("Wrong Credentials!");
       })["catch"](function (error) {
         console.log(error);
       });
@@ -85355,7 +85355,7 @@ var MainComponent = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HeaderComponent__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        path: "/home",
+        path: "/",
         component: _Home__WEBPACK_IMPORTED_MODULE_2__["default"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
@@ -85366,7 +85366,7 @@ var MainComponent = /*#__PURE__*/function (_Component) {
         path: "/profile",
         component: _Profile__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-        to: "/home"
+        to: "/"
       })));
     }
   }]);
@@ -85753,8 +85753,10 @@ var SignUp = /*#__PURE__*/function (_Component) {
         email: this.state.email,
         password: this.state.password
       }).then(function (response) {
-        console.log(response.data);
-        if (response.data == 'success') window.location.href = "/build";else alert('There Might be some error');
+        if (response.data == 'success') window.location.href = "/build";else if (response.data == 'passfail') alert("Password must be of 8 Digits.");else {
+          alert(response.status);
+          alert('There Might be some error');
+        }
       })["catch"](function (error) {
         console.log(error);
       });
