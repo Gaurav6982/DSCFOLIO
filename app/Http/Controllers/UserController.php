@@ -129,6 +129,9 @@ class UserController extends Controller
         return response()->json($user);
     }
     public function final(){
+        $info=UserInfo::where('user_id',Auth::user()->id)->first();
+        if(!isset($info))
+        return redirect('/build');
         return view('finaldash');
     }
 }

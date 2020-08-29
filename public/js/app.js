@@ -85811,7 +85811,7 @@ var HeaderComponent = /*#__PURE__*/function (_Component) {
       event.preventDefault();
       axios.get('/log-out', {}).then(function (response) {
         // console.log(response.data);
-        if (response.data = 'success') window.location.href = "http://127.0.0.1:8000/home";else alert("Wrong Credentials!");
+        if (response.data = 'success') window.location.href = "/";else alert("Wrong Credentials!");
       })["catch"](function (error) {
         console.log(error);
       });
@@ -87047,7 +87047,7 @@ var SignIn = /*#__PURE__*/function (_Component) {
         password: this.state.password
       }).then(function (response) {
         // alert(response.data);
-        if (response.data == 'success') window.location.href = "/build";else if (response.data == 'info') window.location.href = "/final";else alert("Wrong Credentials!");
+        if (response.data == "success") window.location.href = "/build";else if (response.data == "info") window.location.href = "/final";else alert("Wrong Credentials!");
       })["catch"](function (error) {
         console.log(error);
         alert(error);

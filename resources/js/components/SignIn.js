@@ -38,9 +38,9 @@ export class SignIn extends Component {
 
         .then(function (response) {
             // alert(response.data);
-            if(response.data == 'success')
+            if(response.data == "success")
             window.location.href="/build";
-            else if(response.data == 'info')
+            else if(response.data == "info")
             window.location.href="/final";
             else
             alert("Wrong Credentials!");
