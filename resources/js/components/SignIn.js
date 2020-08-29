@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Button, Form, FormGroup, Input, Label, Col} from 'reactstrap';
-
+import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 
 export class SignIn extends Component {
 
@@ -28,36 +29,25 @@ export class SignIn extends Component {
     }
 
     handleSubmit(event) {
-        // console.log('Current State is: ' + JSON.stringify(event.target));
         event.preventDefault();
 
         axios.post('/sign_in', {
             email: this.state.email,
             password: this.state.password
         })
-
         .then(function (response) {
-            // alert(response.data);
-            if(response.data == "success")
-            window.location.href="/build";
-            else if(response.data == "info")
+            if(response.data=='info')
             window.location.href="/final";
-            else
-            alert("Wrong Credentials!");
-        })
+            else if(response.data=='success')
+            window.location.href="/build";
 
+        })
         .catch(function (error) {
             console.log(error);
-            alert(error);
         });
-
-        // const data = new FormData(event.target);
-
-        // fetch('/api/form-submit-url', {
-        //   method: 'POST',
-        //   body: data,
-        // });
-        // event.preventDefault();
+        // if(userFound){
+        //     return  <Redirect  to="/build/" />
+        // }
     }
 
     render() {

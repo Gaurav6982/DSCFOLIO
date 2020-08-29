@@ -78,7 +78,7 @@ export class Logout extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar className="ml-auto" style={{float:'right',color:'#000000'}}>
                             <NavItem className="nav-items">
-                                <NavLink color="dark" className="nav-link"  to='/home'> Home</NavLink>
+                                <NavLink color="dark" className="nav-link"  to='/'> Home</NavLink>
                             </NavItem>
                             <NavItem className="nav-items">
                                 <NavLink className="nav-link" to='/aboutus'> About</NavLink>

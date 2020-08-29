@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button,Form,FormGroup,FormFeedback, Input, Col, Label } from 'reactstrap';
+import { Button,Form,FormGroup, Input, Col, Label } from 'reactstrap';
 import ImageUpload from './ImageUpload';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
@@ -29,20 +29,13 @@ function Build() {
         axios({
             method: "POST",
             url:"/submit",
-            data: data,
-            token:'{{csrf_field()}}',
+            data: data
           })
           .then((response)=>{
-            //   console.log(response.data);
-            if(response.data == 'final')
-            {
-                window.location.href="/final";
-            }
             if (response.data == 'success'){
-            //   console.log("Message Sent.");
-            window.location.href="/final";
+              window.location.href="/final";
               this.resetForm()
-            }else if(response.data.status === 'fail'){
+            }else if(response.data == 'fail'){
               console.log("Message failed to send.");
             }
           })
@@ -185,7 +178,7 @@ const handleRemoveClick1 = index => {
                             </FormGroup>
                             <hr/>
                             <div className="btn-box">
-                                {LinkSet1.length - 1 === i && <span><img src="assets/images/Group 102.svg" style={{height:'40px',width:'auto',cursor: 'pointer',margin:'5px'}} onClick={handleAddClick1}/> <b>Add another Link</b></span>}
+                                {LinkSet1.length - 1 === i && <span><img src="assets/images/Group 102.png" style={{height:'40px',width:'auto',cursor: 'pointer',margin:'5px'}} onClick={handleAddClick1}/> <b>Add another Link</b></span>}
                                 {i!==0 && LinkSet1.length - 1 === i && <button style={{float:'right'}} className="mr10" onClick={() => handleRemoveClick1(i)}>Remove</button>}
                             </div>
                             </div>
@@ -244,7 +237,7 @@ const handleRemoveClick1 = index => {
                             </FormGroup>
                             <hr/>
                             <div className="btn-box">
-                                {LinkSet2.length - 1 === i && <span><img src="assets/images/Group 102.svg" style={{height:'40px',width:'auto',cursor: 'pointer',margin:'5px'}} onClick={handleAddClick2}/> <b>Add another Link</b></span>}
+                                {LinkSet2.length - 1 === i && <span><img src="assets/images/Group 102.png" style={{height:'40px',width:'auto',cursor: 'pointer',margin:'5px'}} onClick={handleAddClick2}/> <b>Add another Link</b></span>}
                                 {i!==0 && LinkSet2.length - 1 === i && <button style={{float:'right'}} className="mr10" onClick={() => handleRemoveClick2(i)}>Remove</button>}
                             </div>
                             </div>
@@ -289,7 +282,7 @@ const handleRemoveClick1 = index => {
 
                             <hr/>
                             <div className="btn-box">
-                                {SocailLinks.length - 1 === i && <span><img src="assets/images/Group 102.svg" style={{height:'40px',width:'auto',cursor: 'pointer',margin:'5px'}} onClick={handleAddClick3}/> <b>Add another Link</b></span>}
+                                {SocailLinks.length - 1 === i && <span><img src="assets/images/Group 102.png" style={{height:'40px',width:'auto',cursor: 'pointer',margin:'5px'}} onClick={handleAddClick3}/> <b>Add another Link</b></span>}
                                 {i!==0 && SocailLinks.length - 1 === i && <button style={{float:'right'}} className="mr10" onClick={() => handleRemoveClick3(i)}>Remove</button>}
                             </div>
                             </div>
@@ -310,7 +303,8 @@ const handleRemoveClick1 = index => {
     }
 
 
+
 export default Build
 if (document.getElementById('build')) {
-    ReactDOM.render(<Build />, document.getElementById('build'))
+    ReactDOM.render(<Build />, document.getElementById('build'));
 }

@@ -65,7 +65,10 @@ class UserController extends Controller
             $links->user_id=$user_id;
             $links->link_set_num=1;
             $links->link_heading=$input[$heading];
+            if(strpos($input[$link], "http://")||strpos($input[$link], "https://"))
             $links->link_url=$input[$link];
+            else
+            $links->link_url='https://'.$input[$link];
             $links->save();
             $i++;
             $link='link1-'.$i;
@@ -82,7 +85,11 @@ class UserController extends Controller
             $links->user_id=$user_id;
             $links->link_set_num=2;
             $links->link_heading=$input[$heading];
+            if(strpos($input[$link], "http://")||strpos($input[$link], "https://"))
             $links->link_url=$input[$link];
+            else
+            $links->link_url='https://'.$input[$link];
+
             $links->save();
             $i++;
             $link='link2-'.$i;
@@ -97,7 +104,10 @@ class UserController extends Controller
             $links=new SocialLinks;
             $links->user_id=$user_id;
             $links->link_name=$input[$heading];
+            if(strpos($input[$link], "http://")||strpos($input[$link], "https://"))
             $links->link_url=$input[$link];
+            else
+            $links->link_url='https://'.$input[$link];
             $links->save();
             $i++;
             $link='link-'.$i;
@@ -109,15 +119,25 @@ class UserController extends Controller
     }
     public function user_details(){
         $user=Auth::user();
-        $user_det=array(
-            'id'=>$user->id,
-            'name'=>$user->name,
-            'email'=>$user->email,
-        );
+
         $user_info=$user->info;
         $set1_links=$user->link_set_1;
         $set2_links=$user->link_set_2;
         $social_links=$user->social;
+        $user_det=array(
+            'id'=>$user->id,
+            'name'=>$user->name,
+            'email'=>$user->email,
+            'display_name'=>$user_info->display_name,
+            'description'=>$user_info->description,
+            'profile_picture'=>$user_info->profile_picture,
+            'resume'=>$user_info->resume,
+            'link_set1_name'=>$user_info->link_set1_name,
+            'link_set2_name'=>$user_info->link_set2_name,
+            'set1_links'=>$set1_links,
+            'set2_links'=>$set2_links,
+            'social_links'=>$social_links,
+        );
         $data=array(
             'user'=>$user_det,
             'info'=>$user_info,
@@ -126,7 +146,7 @@ class UserController extends Controller
             'social_links'=>$social_links,
         );
         //return $user_det;
-        return response()->json($user);
+        return response()->json($user_det);
     }
     public function final(){
         $info=UserInfo::where('user_id',Auth::user()->id)->first();

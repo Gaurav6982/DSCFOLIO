@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { Switch, Route, Redirect} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import Home from './Home';
 import HeaderComponent from './HeaderComponent';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
 import Build from './Build';
 import Profile from './Profile';
 
@@ -14,7 +12,7 @@ export class MainComponent extends Component {
                 <HeaderComponent/>
                 <Switch>
                     <Route path='/' component={Home} />
-                    <Route exact path='/build' component={Build}/>
+                    <Route exact path='/build' component={Build} />
                     <Route exact path='/profile' component={Profile}/>
                     <Redirect to="/" />
                 </Switch>

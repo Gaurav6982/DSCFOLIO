@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Button, Form, FormGroup, Input, Label,Col } from 'reactstrap';
-
+import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 
 export class SignUp extends Component {
 
@@ -30,24 +31,19 @@ export class SignUp extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+
         axios.post('/formSubmit', {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password
         })
+
         .then(function (response) {
-            console.log(response.data);
             if(response.data=='success')
             window.location.href="/build";
-            else if(response.data=='passfail')
-            alert("Password must be of 8 Digits.")
-            else
-            {
-                alert(response.status);
-                alert('There Might be some error');
-            }
-
+            console.log(response.data);
         })
+
         .catch(function (error) {
             console.log(error);
         });
