@@ -49,6 +49,8 @@ class UserController extends Controller
         $profile->user_id=$user_id;
         $profile->display_name=$request->input('displayname');
         $profile->description=$request->input('description');
+        $profile->profile_picture="default.png";
+        $profile->resume="default.pdf";
         $profile->link_set1_name=$request->input('setname1');
         $profile->link_set2_name=$request->input('setname2');
 
