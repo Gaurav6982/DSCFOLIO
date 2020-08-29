@@ -36,6 +36,7 @@ export class SignUp extends Component {
             password: this.state.password
         })
         .then(function (response) {
+            console.log(response.data);
             if(response.data=='success')
             window.location.href="/build";
             else if(response.data=='passfail')

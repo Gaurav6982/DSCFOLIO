@@ -24,5 +24,7 @@ Route::post('/log-out','UserController@log_out');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/build','HomeController@index');
     Route::post('/submit','UserController@submit');
+    Route::get('/details','UserController@user_details');
+    Route::get('/final','UserController@final');
 });
 Auth::routes();

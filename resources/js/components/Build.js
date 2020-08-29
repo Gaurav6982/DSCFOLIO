@@ -33,9 +33,14 @@ function Build() {
             token:'{{csrf_field()}}',
           })
           .then((response)=>{
-              console.log(response.data);
+            //   console.log(response.data);
+            if(response.data == 'final')
+            {
+                window.location.href="/final";
+            }
             if (response.data == 'success'){
-              console.log("Message Sent.");
+            //   console.log("Message Sent.");
+            window.location.href="/final";
               this.resetForm()
             }else if(response.data.status === 'fail'){
               console.log("Message failed to send.");

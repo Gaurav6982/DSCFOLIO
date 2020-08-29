@@ -37,15 +37,18 @@ export class SignIn extends Component {
         })
 
         .then(function (response) {
-            // console.log(response.data);
-            if(response.data='success')
-            window.location.href="/build"
+            // alert(response.data);
+            if(response.data == 'success')
+            window.location.href="/build";
+            else if(response.data == 'info')
+            window.location.href="/final";
             else
             alert("Wrong Credentials!");
         })
 
         .catch(function (error) {
             console.log(error);
+            alert(error);
         });
 
         // const data = new FormData(event.target);

@@ -21,18 +21,15 @@ class UserController extends Controller
     use AuthenticatesUsers;
     public function sign_in(Request $request)
     {
+        //return "failure";
         if($this->login($request))
-        return "success";
-        return "failure";
-        $user=User::where('email','=',$request['email'])->first();
-        if(!$user)
-        return "failure";
-        //return $user->password;
-        if(password_verify($request['password'], $user->password)==1)
         {
-            Auth::login($user);
+            $info=UserInfo::where('user_id',Auth::user()->id)->first();
+            if(isset($info))
+            return "info";
             return "success";
         }
+
         return "failure";
     }
     public function log_out(Request $request){
@@ -41,6 +38,9 @@ class UserController extends Controller
     }
     public function submit(Request $request)
     {
+        $info=UserInfo::where('user_id',Auth::user()->id)->first();
+            if(isset($info))
+            return "back";
         //return $request->all();
         //$ans='';
         $user_id=Auth::user()->id;
@@ -104,5 +104,29 @@ class UserController extends Controller
         if($profile->save())
         return "success";
         return "fail";
+    }
+    public function user_details(){
+        $user=Auth::user();
+        $user_det=array(
+            'id'=>$user->id,
+            'name'=>$user->name,
+            'email'=>$user->email,
+        );
+        $user_info=$user->info;
+        $set1_links=$user->link_set_1;
+        $set2_links=$user->link_set_2;
+        $social_links=$user->social;
+        $data=array(
+            'user'=>$user_det,
+            'info'=>$user_info,
+            'set1_links'=>$set1_links,
+            'set2_links'=>$set2_links,
+            'social_links'=>$social_links,
+        );
+        //return $user_det;
+        return response()->json($user);
+    }
+    public function final(){
+        return view('finaldash');
     }
 }

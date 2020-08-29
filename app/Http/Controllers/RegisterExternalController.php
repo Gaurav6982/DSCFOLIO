@@ -17,8 +17,10 @@ class RegisterExternalController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+    //protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo(){
+        return 'build';
+    }
     /**
      * Create a new controller instance.
      *
@@ -60,29 +62,9 @@ class RegisterExternalController extends Controller
     }
     public function sign_up(Request $data)
     {
-        $validator= Validator::make($data->all(), [
-            'name' => 'required|max:255',
-            'password' => 'required|min:8',
-        ]);
-        if($validator->fails())
-        {
-            if(strlen($data->input('password'))<8)
-            return "passfail";
-            return "fail";
-        }
+        //return $this->register($data);
         if($this->register($data))
         return "success";
-
         return "failure";
-        //return $data;
-        //return $data['password'];
-        $user=new User;
-        $user->name=$data['name'];
-        $user->email=$data['email'];
-        $user->password=Hash::make($data['password']);
-        $user->save();
-        $data->session()->put('user', $data->input('name'));
-        Auth::login($user);
-        return "success";
     }
 }
