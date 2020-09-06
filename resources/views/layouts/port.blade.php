@@ -20,11 +20,7 @@
 </head>
 <body>
     <div id="appa">
-        @guest
-        <div id="navbar"></div>
-        @else
-        <div id="logout"></div>
-        @endguest
+       <div id="portfolio"></div>
         <main class="py-4">
             @yield('content')
         </main>

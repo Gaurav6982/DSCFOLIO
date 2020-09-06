@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::post('/formSubmit','RegisterExternalController@sign_up');
-Route::post('/sign_in','UserController@sign_in');
+Route::post('/sign-in','UserController@sign_in');
 Route::post('/log-out','UserController@log_out');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -26,5 +26,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/submit','UserController@submit');
     Route::get('/details','UserController@user_details');
     Route::get('/final','UserController@final');
+    Route::post('/get-username','UserController@getusername');
+    Route::get('/get-slug','UserController@getslug');
+    Route::get('/get-image','UserController@getimage');
+    Route::get('/get-resume','UserController@getresume');
 });
 Auth::routes();
+Route::get('/portfolio/{slug}','UserController@share');
