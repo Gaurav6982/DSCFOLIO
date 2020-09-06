@@ -1,0 +1,123 @@
+*{
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 100px;
+} 
+
+.affix {
+    box-shadow: 0 8px 6px -6px #d5d5d5;
+}
+  
+.navbar {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  -webkit-box-shadow: 0 4px 6px -6px rgb(223, 219, 219);
+  -moz-box-shadow: 0 4px 6px -6px rgb(218, 212, 212);
+  box-shadow: 0 8px 4px -6px rgb(212, 209, 209);
+}
+
+.nav-items{
+    margin-right: 30px;
+    color:black;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.heading_one{
+    font-weight:bold;
+    background: -webkit-linear-gradient(#4285F4, #6563EF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.para{
+    font-size: 14px;
+}
+
+.buttons:hover {
+    background-position: right; /* change the direction of the change here */
+  }
+
+.buttons{
+    /* background: -webkit-linear-gradient(#4285F4, #6563EF); */
+    background-image: linear-gradient(to right, #4285F4 , #6563EF);
+    font-size: 13px;
+    color:white;
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+.howtouse{
+    cursor: pointer;
+    background: -webkit-linear-gradient(#4285F4, #6563EF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 328px) and (max-width: 600px) {
+    .homepage-img {
+        margin-top: 30px;
+        height:260px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+    .homepage-img {
+        margin-top: 30px;
+        height:390px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .homepage-img {
+        height:440px;
+    }
+}
+
+/* @media (min-width: 992px) and (max-width: 1200px) {
+    .homepage-img {
+        height:460px;
+    }
+} */
+
+@media only screen and (max-width: 768px) {
+    .homecontent{
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .homecontent{
+        text-align: left;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .upload{
+        margin-top: -100px;
+    }
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#4285F4;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}

@@ -194,15 +194,53 @@ class UserController extends Controller
         return response()->json(['username'=>Auth::user()->name]);
     }
     public function getslug(){
+        if(Auth::check())
         return response()->json(['key'=>Auth::user()->slug]);
+        else
+        return response()->json(['error','Not Found']);
     }
     public function getimage(){
+        if(!Auth::check())
+        return response()->json(['error','Not Found']);
         $info=UserInfo::where('user_id',Auth::user()->id)->first();
         return response()->json(['key'=>$info->profile_picture]);
     }
     public function getresume(){
+        if(!Auth::check())
+        return response()->json(['error','Not Found']);
          $info=UserInfo::where('user_id',Auth::user()->id)->first();
         return response()->json(['key'=>$info->resume]);
+    }
+    public function share_details($slug){
+         $user=User::where('slug',$slug)->first();
+
+        $user_info=$user->info;
+        $set1_links=$user->link_set_1;
+        $set2_links=$user->link_set_2;
+        $social_links=$user->social;
+        $user_det=array(
+            'id'=>$user->id,
+            'name'=>$user->name,
+            'email'=>$user->email,
+            'display_name'=>$user_info->display_name,
+            'description'=>$user_info->description,
+            'profile_picture'=>$user_info->profile_picture,
+            'resume'=>$user_info->resume,
+            'link_set1_name'=>$user_info->link_set1_name,
+            'link_set2_name'=>$user_info->link_set2_name,
+            'set1_links'=>$set1_links,
+            'set2_links'=>$set2_links,
+            'social_links'=>$social_links,
+        );
+        $data=array(
+            'user'=>$user_det,
+            'info'=>$user_info,
+            'set1_links'=>$set1_links,
+            'set2_links'=>$set2_links,
+            'social_links'=>$social_links,
+        );
+        //return $user_det;
+        return response()->json($user_det);
     }
     public function share($slug){
         $user=User::where('slug',$slug)->first();

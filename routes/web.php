@@ -27,9 +27,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/details','UserController@user_details');
     Route::get('/final','UserController@final');
     Route::post('/get-username','UserController@getusername');
-    Route::get('/get-slug','UserController@getslug');
-    Route::get('/get-image','UserController@getimage');
-    Route::get('/get-resume','UserController@getresume');
+
 });
 Auth::routes();
 Route::get('/portfolio/{slug}','UserController@share');
+Route::get('/details/portfolio/{slug}','UserController@share_details');
+Route::get('/get-slug','UserController@getslug');
+Route::get('/get-image','UserController@getimage');
+Route::get('/get-resume','UserController@getresume');
