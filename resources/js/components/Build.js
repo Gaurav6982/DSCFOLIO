@@ -40,8 +40,9 @@ function Build() {
             console.log(response.data);
           if (response.data == 'success'){
               window.location.href="/final";
-            console.log("Message Sent.");
             this.resetForm()
+          }else if(response.data == 'back'){
+            window.location.href="/final";
           }else if(response.data == 'fail'){
             console.log("Message failed to send.");
           }

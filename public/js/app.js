@@ -87739,9 +87739,10 @@ function Build() {
 
       if (response.data == 'success') {
         window.location.href = "/final";
-        console.log("Message Sent.");
 
         _this.resetForm();
+      } else if (response.data == 'back') {
+        window.location.href = "/final";
       } else if (response.data == 'fail') {
         console.log("Message failed to send.");
       }
