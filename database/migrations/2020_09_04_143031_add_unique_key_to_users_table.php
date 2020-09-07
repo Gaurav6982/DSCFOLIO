@@ -20,7 +20,7 @@ class AddUniqueKeyToUsersTable extends Migration
         $users=User::all();
         foreach($users as $user)
         {
-            $user->slug=Str::slug($user->name,"-");
+            $user->slug=Str::slug($user->name,"-").$user->id.'-'.time();
             $user->save();
         }
     }
