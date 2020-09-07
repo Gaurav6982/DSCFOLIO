@@ -13,8 +13,12 @@ class ChangeProfilePictureAndResumeNullable extends Migration
      */
     public function up()
     {
-         DB::statement('ALTER TABLE user_info MODIFY profile_picture varchar(25) NULL;');
-         DB::statement('ALTER TABLE user_info MODIFY resume varchar(25) NULL;');
+        Schema::table('user_info', function (Blueprint $table) {
+            $table->mediumText('profile_picture')->nulalble()->change();
+            $table->mediumText('resume')->nulalble()->change();
+        });
+         //DB::statement('ALTER TABLE user_info MODIFY profile_picture varchar(25) NULL;');
+         //DB::statement('ALTER TABLE user_info MODIFY resume varchar(25) NULL;');
     }
 
     /**
