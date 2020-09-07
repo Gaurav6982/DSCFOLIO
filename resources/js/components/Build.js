@@ -40,7 +40,7 @@ function Build() {
             console.log(response.data);
           if (response.data == 'success'){
               window.location.href="/final";
-            this.resetForm()
+            this.resetForm();
           }else if(response.data == 'back'){
             window.location.href="/final";
           }else if(response.data == 'fail'){
