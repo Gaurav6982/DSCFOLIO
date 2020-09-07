@@ -196,10 +196,10 @@ class UserController extends Controller
     public function getslug(){
         if(Auth::check())
         return response()->json(['key'=>Auth::user()->slug]);
-        else
         return response()->json(['error','Not Found']);
     }
     public function getimage(){
+
         if(!Auth::check())
         return response()->json(['error','Not Found']);
         $info=UserInfo::where('user_id',Auth::user()->id)->first();

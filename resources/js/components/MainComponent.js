@@ -17,7 +17,7 @@ export class MainComponent extends Component {
     async componentWillMount() {
       const url = "/get-slug";
       const response = await fetch(url);
-      const data = await response.json();
+      const data = await response.json()
       this.setState({slug: data.key});
     }
     render() {
