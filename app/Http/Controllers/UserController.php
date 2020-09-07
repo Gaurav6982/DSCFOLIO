@@ -16,6 +16,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\UserInfo;
 use App\LinkSet;
 use App\SocialLinks;
+use Str;
 class UserController extends Controller
 {
     use AuthenticatesUsers;
@@ -127,8 +128,7 @@ class UserController extends Controller
         }
         if($profile->save())
         {
-            $name_arr=explode(" ",$user->name);
-            $name=implode($name_arr,"-");
+            $name=Str::slug($user->name);
             $slug=$name.$user->id.'-'.time();
             $user->slug=$slug;
             $user->save();

@@ -62,7 +62,6 @@ class RegisterExternalController extends Controller
     }
     public function sign_up(Request $data)
     {
-        //return $this->register($data);
         if($this->register($data))
         return "success";
         return "failure";

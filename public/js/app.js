@@ -90887,7 +90887,6 @@ var SignUp = /*#__PURE__*/function (_Component) {
         email: this.state.email,
         password: this.state.password
       }).then(function (response) {
-        console.log(response);
         if (response.data == 'success') window.location.href = "/build";
       })["catch"](function (error) {
         console.log(error);
