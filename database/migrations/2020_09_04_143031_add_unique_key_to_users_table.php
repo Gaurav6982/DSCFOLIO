@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\User;
+use Str;
 class AddUniqueKeyToUsersTable extends Migration
 {
     /**
@@ -19,7 +20,7 @@ class AddUniqueKeyToUsersTable extends Migration
         $users=User::all();
         foreach($users as $user)
         {
-            $user->slug=str_slug($user->name,"-");
+            $user->slug=Str::slug($user->name,"-");
             $user->save();
         }
     }
