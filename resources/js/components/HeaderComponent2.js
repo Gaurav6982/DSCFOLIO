@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { Navbar, NavbarBrand, Nav,NavItem,Button } from 'reactstrap';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 export class HeaderComponent2 extends Component {
 
     render() {
+        
         return (
+            <BrowserRouter>
             <div>
                 <Navbar className="fixed-top navbar" color="white" light expand="lg">
                     <div className="container">
@@ -20,7 +23,9 @@ export class HeaderComponent2 extends Component {
                     </div>
                 </Navbar>
             </div>
+            </BrowserRouter>
         );
+        
     }
 }
 

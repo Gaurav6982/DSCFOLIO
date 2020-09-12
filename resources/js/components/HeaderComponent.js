@@ -3,6 +3,7 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button, Mod
 import { NavLink } from 'react-router-dom';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 export class HeaderComponent extends Component {
 
@@ -39,7 +40,9 @@ export class HeaderComponent extends Component {
     }
 
     render() {
+        
         return (
+            <BrowserRouter>
             <div>
                 <Navbar className="fixed-top navbar" color="white" light expand="lg">
                     <div className="container">
@@ -86,7 +89,9 @@ export class HeaderComponent extends Component {
                     </ModalBody>
                 </Modal>
             </div>
+            </BrowserRouter>
         );
+        
     }
 }
 

@@ -6,14 +6,14 @@ import ReactDOM from 'react-dom';
 function App() {
   return (
     <BrowserRouter>
-    <div className="App">
-      <MainComponent/>
-    </div>
+      <div className="App">
+        <MainComponent/>
+      </div>
     </BrowserRouter>
   );
 }
 
-export default App;
+export default App
 if (document.getElementById('app')) {
     ReactDOM.render(<App />, document.getElementById('app'));
 }

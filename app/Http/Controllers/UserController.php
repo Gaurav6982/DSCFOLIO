@@ -48,7 +48,9 @@ class UserController extends Controller
         $this->validate($request,[
             'displayname'=>'required',
             'description'=>'required',
-
+            'Resumelink'=>'required',
+            'setname1'=>'required',
+            'setname2'=>'required',
         ]);
         $user=Auth::user();
         $user_id=$user->id;
