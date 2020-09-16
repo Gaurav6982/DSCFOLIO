@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::post('/formSubmit','RegisterExternalController@sign_up');
+Route::post('/sign-in','AuthController@sign_in');
+Route::post('/log-out','AuthController@log_out');
+Route::post('/user/edit','UserController@edit_user');
+// Route::get('/details','UserController@user_details');
+
+// Route::get('/get-slug','UserController@getslug');
+// Route::post('/register','UserController@register');
+// Route::post('/login','UserController@login');
+// Route::post('/logout','UserController@logout');
+// Route::get('/profile','UserController@profile');
+// Route::get('/fetch/category','API\V1\Data\CategoriesController@index');

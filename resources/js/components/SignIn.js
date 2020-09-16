@@ -10,7 +10,8 @@ export class SignIn extends Component {
 
         this.state = {
             email: '',
-            password: ''
+            password: '',
+	        error:''
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -31,26 +32,28 @@ export class SignIn extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        axios.post('/sign-in', {
+        axios.post('/api/sign-in', {
             email: this.state.email,
             password: this.state.password
         })
         .then(function (response) {
-            if(response.data=='success')
+            console.log(response);
+            if(response.data.success=='build')
             window.location.href="/build";
-            else if(response.data=='info')
+            else if(response.data.success=='final')
             window.location.href="/final";
         })
-        .catch(function (error) {
-            console.log(error);
+        .catch((error)=> {
+            console.log(error.response.data.error);
+            this.setState({error: error.response.data.error})
         });
-        // if(userFound){
-        //     return  <Redirect  to="/build/" />
-        // }
+        
     }
 
     render() {
         return (
+	    <div>
+            {this.state.error ? <div className="alert alert-danger" role="alert">{this.state.error}</div> : null}
             <Form onSubmit={this.handleSubmit}>
                 <FormGroup row>
                     <Label htmlFor="email" md={3}>Email</Label>
@@ -70,6 +73,7 @@ export class SignIn extends Component {
                 </FormGroup><br/>
                 <Button className="col-lg-12 buttons" type="submit" value="submit" color="primary">Sign In</Button>
             </Form>
+	    </div>
         )
     }
 }

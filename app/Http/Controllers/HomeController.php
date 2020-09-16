@@ -27,4 +27,5 @@ class HomeController extends Controller
         return redirect('/final');
         return view('home');
     }
+    
 }

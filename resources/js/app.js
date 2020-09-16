@@ -12,3 +12,4 @@ require('./components/Portfolio');
 require('./components/Share');
 require('./components/Logout');
 require('./components/FinalDashboard');
+require('./components/Edit');

@@ -62,8 +62,29 @@ class RegisterExternalController extends Controller
     }
     public function sign_up(Request $data)
     {
+        $customMessages = [
+            'password.min'=>'The Password must be minimum 8 digits.',
+            'email.required' => 'The email is required.',
+            'email.unique' => 'The email is already registered.',
+        ];
+        $validator = Validator::make($data->all(),[
+            'name' => 'string|required',
+            'email' => 'email|unique:users,email|nullable',
+            'password' => 'required|min:8'
+        ],$customMessages);
+
+        //If validation fails
+        if($validator->fails())
+        {
+            return response()->json(['error'=>$validator->errors()],400);
+        }
+
         if($this->register($data))
-        return "success";
-        return "failure";
+        return response()->json(['success'=>'Registered'],200);
+        return response()->json(['error'=>'Something Went Wrong'],401);
+    }
+    public function welcome()
+    {
+        return view('welcome');
     }
 }
