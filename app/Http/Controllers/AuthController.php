@@ -18,7 +18,7 @@ use App\UserInfo;
 class AuthController extends Controller
 {
     use AuthenticatesUsers;
-    public function register(Request $request)
+    public function registera(Request $request)
     {
         $data = [];
         //Validate credentials

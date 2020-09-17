@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','RegisterExternalController@welcome');
 
-// Route::post('/formSubmit','RegisterExternalController@sign_up');
-// Route::post('/sign-in','UserController@sign_in');
-// Route::post('/log-out','UserController@log_out');
+Route::post('/formSubmit','RegisterExternalController@sign_up');
+Route::post('/sign-in','AuthController@sign_in');
+Route::post('/log-out','AuthController@log_out');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/build','HomeController@index');
@@ -27,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/get-username','UserController@getusername');
     Route::get('/edit','UserController@edit');
     Route::post('/user/edit','UserController@edit_user');
+    // Route::post('/log-out','UserController@log_out');
 });
 Auth::routes();
 Route::get('/portfolio/{slug}','UserController@share');

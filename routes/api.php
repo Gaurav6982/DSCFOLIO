@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/formSubmit','RegisterExternalController@sign_up');
 Route::post('/sign-in','AuthController@sign_in');
 Route::post('/log-out','AuthController@log_out');
-Route::post('/user/edit','UserController@edit_user');
+// Route::post('/user/edit','UserController@edit_user');
 // Route::get('/details','UserController@user_details');
 
 // Route::get('/get-slug','UserController@getslug');

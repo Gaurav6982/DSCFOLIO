@@ -70,7 +70,7 @@ class RegisterExternalController extends Controller
         $validator = Validator::make($data->all(),[
             'name' => 'string|required',
             'email' => 'email|unique:users,email|nullable',
-            'password' => 'required|min:8'
+            'password' => 'required|min:8|max:20|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'
         ],$customMessages);
 
         //If validation fails

@@ -42,7 +42,7 @@ export class Logout extends Component {
     logout(event){
         event.preventDefault();
 
-        axios.post('/api/log-out', {
+        axios.post('/log-out', {
         })
 
         .then(function (response) {

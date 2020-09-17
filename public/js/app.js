@@ -91876,7 +91876,7 @@ var SignIn = /*#__PURE__*/function (_Component) {
       var _this2 = this;
 
       event.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/sign-in', {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/sign-in', {
         email: this.state.email,
         password: this.state.password
       }).then(function (response) {
@@ -92054,7 +92054,7 @@ var SignUp = /*#__PURE__*/function (_Component) {
       var _this2 = this;
 
       event.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/api/formSubmit", {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/formSubmit", {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password

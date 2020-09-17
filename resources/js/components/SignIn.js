@@ -32,7 +32,7 @@ export class SignIn extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        axios.post('/api/sign-in', {
+        axios.post('/sign-in', {
             email: this.state.email,
             password: this.state.password
         })
