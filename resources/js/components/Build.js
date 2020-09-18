@@ -32,7 +32,7 @@ function Build() {
 
         axios({
           method: "POST",
-          url:"/submit",
+          url:"/api/submit",
           data: formData
         })
         .then((response)=>{

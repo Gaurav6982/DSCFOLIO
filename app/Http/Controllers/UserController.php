@@ -17,8 +17,17 @@ use App\UserInfo;
 use App\LinkSet;
 use App\SocialLinks;
 use Str;
+use JWTAuth;
 class UserController extends Controller
 {
+    // protected $user;
+    // public function _construct(){
+    //     $this->$user=JWTAuth::parseToken()->authenticate();
+    // }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     
     public function submit(Request $request)
     {
@@ -237,13 +246,14 @@ class UserController extends Controller
             'social_links'=>$social_links,
         );
         //return $user_det;
-        return response()->json($user_det);
+        return response()->json($user_det,200);
     }
     public function final(){
-
-        $info=UserInfo::where('user_id',Auth::user()->id)->first();
-        if(!isset($info))
-        return redirect('/build');
+        // $authuser=JWTAuth::toUser(JWTAuth::getToken());
+        // return auth()->user();
+        // $info=UserInfo::where('user_id',Auth::user()->id)->first();
+        // if(!isset($info))
+        // return redirect('/build');
         return view('finaldash');
     }
     public function getusername(){
@@ -256,7 +266,6 @@ class UserController extends Controller
         return response()->json(['error','Not Found'],400);
     }
     public function getimage(){
-
         if(!Auth::check())
         return response()->json(['error','Not Found']);
         $info=UserInfo::where('user_id',Auth::user()->id)->first();

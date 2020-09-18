@@ -24,7 +24,7 @@ export class Portfolio extends Component {
 
   async componentWillMount() {
     console.log(window.location.pathname);
-  const url = `/details${window.location.pathname}`;
+  const url = `/api/details${window.location.pathname}`;
   const response = await fetch(url);
   const data = await response.json();
   this.setState({ person: data, loading: false });

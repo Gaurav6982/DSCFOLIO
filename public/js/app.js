@@ -87733,7 +87733,7 @@ function Build() {
 
     axios__WEBPACK_IMPORTED_MODULE_2___default()({
       method: "POST",
-      url: "/submit",
+      url: "/api/submit",
       data: formData
     }).then(function (response) {
       console.log(response.data);
@@ -88461,7 +88461,7 @@ function Edit() {
 
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    fetch('/details').then(function (res) {
+    fetch('/api/details').then(function (res) {
       return res.json();
     }).then(function (res) {
       if (res.set1_links.length == 1) {
@@ -89391,7 +89391,7 @@ var FinalDashboard = /*#__PURE__*/function (_Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                url = "/details";
+                url = "/api/details";
                 _context.next = 3;
                 return fetch(url);
 
@@ -90784,7 +90784,7 @@ var Logout = /*#__PURE__*/function (_Component) {
     key: "logout",
     value: function logout(event) {
       event.preventDefault();
-      axios.post('/api/log-out', {}).then(function (response) {
+      axios.post('/api/logout', {}).then(function (response) {
         // console.log(response.data);
         if (response.data = 'success') window.location.href = "/";else alert("Wrong Credentials!");
       })["catch"](function (error) {
@@ -91193,7 +91193,7 @@ var Portfolio = /*#__PURE__*/function (_Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 console.log(window.location.pathname);
-                url = "/details".concat(window.location.pathname);
+                url = "/api/details".concat(window.location.pathname);
                 _context.next = 4;
                 return fetch(url);
 
@@ -91876,12 +91876,12 @@ var SignIn = /*#__PURE__*/function (_Component) {
       var _this2 = this;
 
       event.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/sign-in', {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/login', {
         email: this.state.email,
         password: this.state.password
       }).then(function (response) {
         console.log(response);
-        if (response.data.success == 'build') window.location.href = "/build";else if (response.data.success == 'final') window.location.href = "/final";
+        if (response.data.status == 'build') window.location.href = "/build";else if (response.data.status == 'final') window.location.href = "/final";
       })["catch"](function (error) {
         console.log(error.response.data.error);
 
@@ -92054,7 +92054,7 @@ var SignUp = /*#__PURE__*/function (_Component) {
       var _this2 = this;
 
       event.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/formSubmit", {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/api/register", {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password

@@ -32,15 +32,15 @@ export class SignIn extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        axios.post('/sign-in', {
+        axios.post('/api/login', {
             email: this.state.email,
             password: this.state.password
         })
         .then(function (response) {
             console.log(response);
-            if(response.data.success=='build')
+            if(response.data.status=='build')
             window.location.href="/build";
-            else if(response.data.success=='final')
+            else if(response.data.status=='final')
             window.location.href="/final";
         })
         .catch((error)=> {

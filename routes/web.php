@@ -20,20 +20,15 @@ Route::post('/sign-in','AuthController@sign_in');
 Route::post('/log-out','AuthController@log_out');
 
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/build','HomeController@index');
-    Route::post('/submit','UserController@submit');
-    Route::get('/details','UserController@user_details');
+// Route::group(['middleware' => 'auth'], function () {
+    Route::get('/build','HomeController@index')->middleware('auth');
+    // Route::get('/details','UserController@user_details');
     Route::get('/final','UserController@final');
-    Route::post('/get-username','UserController@getusername');
     Route::get('/edit','UserController@edit');
     Route::post('/user/edit','UserController@edit_user');
     // Route::post('/log-out','UserController@log_out');
-});
+// });
 Auth::routes();
 Route::get('/portfolio/{slug}','UserController@share');
 Route::get('/details/portfolio/{slug}','UserController@share_details');
 
-Route::get('/get-slug','UserController@getslug');
-Route::get('/get-image','UserController@getimage');
-Route::get('/get-resume','UserController@getresume');

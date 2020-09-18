@@ -33,7 +33,7 @@ function Edit() {
     // );
  
     useEffect(() => {
-        fetch('/details')
+        fetch('/api/details')
         .then(res=>res.json())
             .then(res => {
                         

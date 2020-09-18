@@ -75,7 +75,7 @@ export class SignUp extends Component {
         event.preventDefault();
 
         axios
-            .post("/formSubmit", {
+            .post("/api/register", {
                 name: this.state.name,
                 email: this.state.email,
                 password: this.state.password
