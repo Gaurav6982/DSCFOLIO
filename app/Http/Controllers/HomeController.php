@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // return "hete";
+        return Auth::guard('api')->user();
         if(Auth::user()->info)
         return redirect('/final');
         return view('home');

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Button, Form, FormGroup, Input, Label, Col} from 'reactstrap';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
-
+import Api from '../bootstrap'
 export class SignIn extends Component {
 
     constructor(props) {
@@ -37,13 +37,16 @@ export class SignIn extends Component {
             password: this.state.password
         })
         .then(function (response) {
-            console.log(response);
+            console.log(response.data.token.original.access_token);
+            // localStorage.setItem('token',response.data.token.original.access_token);
+            // login();
             if(response.data.status=='build')
             window.location.href="/build";
             else if(response.data.status=='final')
             window.location.href="/final";
         })
         .catch((error)=> {
+            console.log(error);
             console.log(error.response.data.error);
             this.setState({error: error.response.data.error})
         });

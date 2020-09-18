@@ -35,6 +35,7 @@ Route::middleware(['api', 'auth'])->group(function () {
     Route::get('/get-slug','UserController@getslug');
     Route::get('/get-image','UserController@getimage');
     Route::get('/get-resume','UserController@getresume');
+    Route::post('/user/edit','UserController@edit_user');
     
 });
 // Route::group([

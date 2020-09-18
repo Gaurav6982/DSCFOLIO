@@ -32,5 +32,10 @@
 </body>
 
     <!-- Scripts -->
-
+    <script type="text/javascript">
+        var url = "{{route('home')}}" ;
+        var env_path;
+        console.log(url);
+        window.localStorage.setItem('env_path',url);
+    </script>
 </html>
