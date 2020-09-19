@@ -10,6 +10,8 @@ This repo is functionality complete — PRs and issues welcome!
 
 ## Installation
 
+Laravel Version - 7.22.4
+php Version - 7.3.19
 Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/7.x/installation#installation)
 
 
