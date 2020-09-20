@@ -29,12 +29,12 @@ Route::group([
 
 Route::middleware(['api', 'auth'])->group(function () {
     Route::post('user', 'NAuthController@me');
-    Route::get('details','UserController@user_details');
+    Route::post('details','UserController@user_details');
     Route::post('/get-username','UserController@getusername');
     Route::post('/submit','UserController@submit');
-    Route::get('/get-slug','UserController@getslug');
-    Route::get('/get-image','UserController@getimage');
-    Route::get('/get-resume','UserController@getresume');
+    Route::post('/get-slug','UserController@getslug');
+    Route::post('/get-image','UserController@getimage');
+    Route::post('/get-resume','UserController@getresume');
     Route::post('/user/edit','UserController@edit_user');
     
 });
