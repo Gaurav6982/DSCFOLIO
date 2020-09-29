@@ -37,9 +37,9 @@ export class FinalDashboard extends Component {
   async componentDidMount() {
     const url = "/api/details";
     const response = await fetch(url);
-    const data = await response.json();
+    // const data = await response.json();
  //    const data = DATA;
-    this.setState({ person: data, loading: false });
+    this.setState({ person: response, loading: false });
   }
  
   

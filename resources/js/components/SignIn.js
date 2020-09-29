@@ -32,12 +32,12 @@ export class SignIn extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        axios.post('/api/login', {
+        axios.post('/sign-in', {
             email: this.state.email,
             password: this.state.password
         })
         .then(function (response) {
-            console.log(response.data.token.original.access_token);
+            // console.log(response.data.token.original.access_token);
             // localStorage.setItem('token',response.data.token.original.access_token);
             // login();
             if(response.data.status=='build')

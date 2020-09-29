@@ -82,14 +82,16 @@ export class SignUp extends Component {
             })
 
             .then(function(response) {
-                if (response.status == 200)
+                console.log(response.data);
+                localStorage.setItem('token',response.data.access_token);
+                console.log(response);
                 window.location.href = "/build";
                 console.log(response.data);
             })
 
             .catch((err)=> {
-                console.log(err.response.data.error.email[0]);
-                this.setState({error: err.response.data.error.email[0]})
+                console.log(err);
+                // this.setState({error: err.response.data.error.email[0]})
             });
     }
 

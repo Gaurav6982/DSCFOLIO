@@ -25,17 +25,19 @@ Route::group([
     Route::post('logout', 'NAuthController@logout');
     Route::post('refresh', 'NAuthController@refresh');  
     Route::post('register', 'NAuthController@register');
+    Route::post('/token','NAuthController@token');
 });
 
 Route::middleware(['api', 'auth'])->group(function () {
     Route::post('user', 'NAuthController@me');
-    Route::post('details','UserController@user_details');
-    Route::post('/get-username','UserController@getusername');
+    Route::get('details','UserController@user_details');
+    Route::get('/get-username','UserController@getusername');
     Route::post('/submit','UserController@submit');
-    Route::post('/get-slug','UserController@getslug');
+    Route::get('/get-slug','UserController@getslug');
     Route::post('/get-image','UserController@getimage');
     Route::post('/get-resume','UserController@getresume');
     Route::post('/user/edit','UserController@edit_user');
+    
     
 });
 // Route::group([

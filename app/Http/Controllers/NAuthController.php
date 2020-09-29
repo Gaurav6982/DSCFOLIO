@@ -8,6 +8,7 @@ use App\User;
 use App\UserInfo;
 class NAuthController extends Controller
 {
+    // protected $token=null;
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login','register']]);
@@ -40,6 +41,7 @@ class NAuthController extends Controller
             'message'=>'Move to Form Page'
           ];
       }
+      // $this->token=$token;
       $data['token']=$this->respondWithToken($token);
       return response()->json($data, 200);
     //   return $this->respondWithToken($token);
@@ -65,7 +67,7 @@ class NAuthController extends Controller
       ]);
 
       $token = auth()->login($user);
-
+        // $this->token=$token;
       return $this->respondWithToken($token);
     }
 
@@ -106,4 +108,16 @@ class NAuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
+    // public function token(){
+    //   return response()->json([
+    //     'access_token' => $this->token,
+    //     'token_type' => 'bearer',
+    //     'expires_in' => auth()->factory()->getTTL() * 60
+    // ]);
+    //   $user=Auth::user();
+    //   return $this->token;
+    //   if(isset($token))
+    //   return response()->json(['token'=>$token],200);
+    //   return response()->json(['status'=>'Unauthorized'],400);
+    // }
 }

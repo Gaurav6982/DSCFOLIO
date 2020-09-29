@@ -5,7 +5,7 @@ import Build from "./Build";
 import HeaderComponent from "./HeaderComponent";
 import Profile from "./Profile";
 import FinalDashboard from "./FinalDashboard";
-
+import Authentication from "./Authentication";
 export class MainComponent extends Component {
     constructor(props) {
         super(props);
@@ -26,6 +26,7 @@ export class MainComponent extends Component {
                 <Switch>
                     {/* <HeaderComponent /> */}
                     <Route path="/" component={Home} />
+                    <Authentication>
                     <Route exact path="/build" component={Build} />
                     <Route exact path="/profile" component={Profile} />
                     <Route
@@ -34,6 +35,7 @@ export class MainComponent extends Component {
                             <FinalDashboard slug={this.state.slug} />
                         )}
                     />
+                    </Authentication>
                     <Redirect to="/" />
                 </Switch>
             </div>

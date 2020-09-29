@@ -20,12 +20,12 @@ Route::post('/sign-in','AuthController@sign_in');
 Route::post('/log-out','AuthController@log_out');
 
 
-// Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/build','HomeController@index');
     // Route::get('/details','UserController@user_details')->middleware('auth');
     Route::get('/final','UserController@final');
     Route::get('/edit','UserController@edit');
-// });W
+});
 Auth::routes();
 Route::get('/portfolio/{slug}','UserController@share');
 Route::get('/details/portfolio/{slug}','UserController@share_details');
